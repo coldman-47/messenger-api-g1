@@ -1,0 +1,23 @@
+//installation des bundles maker orm security api
+composer require symfony/maker-bundle doctrine/orm symfony/security-bundle api-platform/symfony
+
+//création de la classe pour la gestion de l'authentification
+symfony console make:user
+
+//création/modification d'une entité
+symfony console make:entity User //user étant le nom de la classe
+
+//Pour rendre la classe API accessible, ajoutez l'annotation #[ApiResource] à la classe (juste avant la déclaration de la classe)
+#[ApiResource] //use ApiPlatform\Metadata\ApiResource;
+
+//on modifie la chainte de connexion à la base de données dans le .env
+DATABASE_URL="mysql://root:root@127.0.0.1:3306/tp-symfony-g1?serverVersion=8.0.32&charset=utf8mb4"
+
+//Création de la base de données avec la commande suivante
+symfony console doctrine:database:create
+
+//Génération d'un fichier de migration (pour la création des tables)
+symfony console make:migration
+
+//Exécution des migrations
+symfony console doctrine:migrations:migrate
