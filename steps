@@ -21,3 +21,7 @@ symfony console make:migration
 
 //Exécution des migrations
 symfony console doctrine:migrations:migrate
+
+
+//installation des dépendances après clone
+composer update --ignore-platform-reqs
